@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMUN-RA.ENERGY | The Solar God Fuels AI's Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sun-gold: #FFD700;
+            --solar-orange: #FF8C00;
+            --energy-blue: #00FFFF;
+            --pharaoh-purple: #9D00FF;
+            --midnight-black: #0A0A14;
+            --desert-sand: #E6C200;
+            --neon-glow: rgba(255, 215, 0, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--midnight-black);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 太阳能量场背景 */
+        #solar-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        /* 金字塔几何背景 */
+        .pyramid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, rgba(255, 215, 0, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 215, 0, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 140, 0, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 140, 0, 0.05) 75%);
+            background-size: 100px 100px;
+            background-position: 0 0, 0 50px, 50px -50px, -50px 0px;
+            z-index: -2;
+            opacity: 0.3;
+        }
+        
+        /* 太阳光晕效果 */
+        .sun-halo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vh;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: solarPulse 8s infinite alternate;
+        }
+        
+        @keyframes solarPulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+        }
+        
+        /* 主容器 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* 头部 */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--sun-gold), transparent);
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--neon-glow);
+        }
+        
+        .logo-amun {
+            color: var(--sun-gold);
+            display: inline-block;
+            animation: glow 3s infinite alternate;
+        }
+        
+        .logo-ra {
+            color: var(--solar-orange);
+            display: inline-block;
+            animation: glow 3s infinite alternate-reverse;
+        }
+        
+        .logo-energy {
+            color: var(--energy-blue);
+            font-size: 2.8rem;
+            margin-left: 0.5rem;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px var(--sun-gold); }
+            100% { text-shadow: 0 0 25px var(--solar-orange), 0 0 35px var(--solar-orange); }
+        }
+        
+        .domain-stats {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--desert-sand);
+            background: rgba(255, 215, 0, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(10, 10, 20, 0.7);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .musk-quote {
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            color: var(--sun-gold);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .quote-author {
+            font-size: 1.1rem;
+            color: var(--energy-blue);
+            text-align: right;
+            margin-top: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin: 2rem 0;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* 价格区域 - 三期付款 */
+        .pricing-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(157, 0, 255, 0.1));
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sun-gold), var(--pharaoh-purple), var(--energy-blue));
+        }
+        
+        .price-tag {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .total-price {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--sun-gold);
+            text-shadow: 0 0 20px var(--neon-glow);
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-label {
+            color: var(--desert-sand);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .payment-plan {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .payment-phase {
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .payment-phase:hover {
+            transform: translateY(-5px);
+            border-color: var(--sun-gold);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+        }
+        
+        .phase-number {
+            font-size: 1.8rem;
+            color: var(--sun-gold);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .phase-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--energy-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .phase-desc {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* 特性网格 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature {
+            background: rgba(20, 20, 30, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            border-left: 4px solid var(--sun-gold);
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            border-left-color: var(--energy-blue);
+            transform: translateX(5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--sun-gold);
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .feature-desc {
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+        
+        /* 联系方式 */
+        .contact-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--sun-gold);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .contact-subtitle {
+            color: var(--desert-sand);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-email {
+            font-size: 1.6rem;
+            font-family: 'Orbitron', monospace;
+            color: var(--energy-blue);
+            background: rgba(0, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 1rem 0;
+            text-decoration: none;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .contact-email:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .contact-note {
+            margin-top: 1.5rem;
+            color: #888;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        /* 页脚 */
+        footer {
+            margin-top: 5rem;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            color: #666;
+        }
+        
+        .footer-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .solar-status {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            margin-left: 1rem;
+            animation: statusPulse 2s infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .logo-energy {
+                font-size: 2rem;
+            }
+            
+            .musk-quote {
+                font-size: 1.6rem;
+            }
+            
+            .total-price {
+                font-size: 3.5rem;
+            }
+            
+            .payment-plan {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-email {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.5rem;
+                word-break: break-all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 太阳能量场背景 -->
+    <canvas id="solar-field"></canvas>
+    <div class="pyramid-bg"></div>
+    <div class="sun-halo"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-amun">AMUN</span><span class="logo-ra">-RA</span><span class="logo-energy">.ENERGY</span>
+            </div>
+            <div class="domain-stats">
+                7-CHAR SUN GOD + ENERGY = SOLAR AI FUTURE
+            </div>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <div class="musk-quote">
+                    "THE ULTIMATE COMPETITION IN AI IS ENERGY. 
+                    THE ULTIMATE SOURCE IS THE SUN."
+                </div>
+                <div class="quote-author">— ELON MUSK, TESLA & SPACEX</div>
+                
+                <p class="tagline">
+                    Amun-Ra, the ancient Egyptian Sun God, now fuels the most critical resource of the 21st century: 
+                    <span style="color: var(--sun-gold); font-weight: 600;">Solar Energy for AI, Civilization, and Beyond.</span>
+                </p>
+                
+                <p class="tagline">
+                    This domain represents the convergence of ancient solar worship and the future of unlimited, clean energy 
+                    to power artificial intelligence, data centers, and human progress.
+                </p>
+            </section>
+            
+            <section class="pricing-section">
+                <div class="price-tag">
+                    <div class="total-price">$88,888</div>
+                    <div class="price-label">FULL DOMAIN ACQUISITION</div>
+                </div>
+                
+                <div class="tagline" style="font-size: 1.2rem; margin: 1rem 0;">
+                    3-Phase Payment Plan Available (Symbolizing Sun's 3 Stages: Rise, Zenith, Set)
+                </div>
+                
+                <div class="payment-plan">
+                    <div class="payment-phase">
+                        <div class="phase-number">PHASE 01</div>
+                        <div class="phase-amount">$29,629</div>
+                        <div class="phase-desc">Sunrise Payment<br>Initial acquisition & transfer</div>
+                    </div>
+                    <div class="payment-phase">
+                        <div class="phase-number">PHASE 02</div>
+                        <div class="phase-amount">$29,629</div>
+                        <div class="phase-desc">Solar Zenith Payment<br>Mid-term completion</div>
+                    </div>
+                    <div class="payment-phase">
+                        <div class="phase-number">PHASE 03</div>
+                        <div class="phase-amount">$29,630</div>
+                        <div class="phase-desc">Sunset Payment<br>Final transfer & documentation</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="contact-email" id="acquireButton">
+                        INITIATE SOLAR ACQUISITION PROTOCOL
+                    </button>
+                </div>
+            </section>
+            
+            <section class="features">
+                <div class="feature">
+                    <div class="feature-icon">☀️</div>
+                    <div class="feature-title">ANCIENT POWER, MODERN ENERGY</div>
+                    <div class="feature-desc">
+                        Amun-Ra, the king of Egyptian gods, represented the hidden power of the sun. 
+                        Today, solar energy is the key to unlimited AI computational power and sustainable civilization.
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">ENERGY IS THE NEW CURRENCY</div>
+                    <div class="feature-desc">
+                        In the AI era, computational power is limited by energy. 
+                        Solar energy represents the ultimate, scalable solution for powering next-generation AI systems.
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏛️</div>
+                    <div class="feature-title">FROM PYRAMIDS TO DATA CENTERS</div>
+                    <div class="feature-desc">
+                        Ancient Egyptians built pyramids aligned with the sun. 
+                        Future civilizations will build solar-powered AI data centers harnessing the same eternal power source.
+                    </div>
+                </div>
+            </section>
+            
+            <section class="contact-section" id="contact">
+                <div class="contact-title">SOLAR ENERGY COUNCIL ACCESS</div>
+                <div class="contact-subtitle">DIRECT COMMUNICATION WITH ENERGY ARCHITECT</div>
+                <div class="contact-email" id="emailDisplay">
+                    JOSHUA369X@GMAIL.COM
+                </div>
+                <div class="contact-note">
+                    ENCRYPTED TRANSMISSION • 24/7 SOLAR CYCLE MONITORING • ENERGY FUTURE INQUIRIES
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-info">
+                AMUN-RA.ENERGY | THE ANCIENT SUN POWERS OUR FUTURE
+            </div>
+            <div class="footer-info">
+                DOMAIN STATUS: <span class="solar-status">SOLAR ACTIVE • ENERGY FLOWING • AI READY</span>
+            </div>
+            <div class="footer-info" style="margin-top: 2rem; font-size: 0.8rem; color: #555;">
+                "The sun god Ra journeyed through the sky by day and through the underworld by night. 
+                Our energy journey is just beginning."
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 太阳能量场粒子系统
+        const canvas = document.getElementById('solar-field');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 120;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        class SolarParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 4 + 1;
+                this.speedX = (Math.random() - 0.5) * 1.5;
+                this.speedY = (Math.random() - 0.5) * 1.5;
+                this.color = Math.random() > 0.7 ? 'rgba(255, 215, 0, 0.8)' : 
+                            Math.random() > 0.5 ? 'rgba(255, 140, 0, 0.8)' : 'rgba(0, 255, 255, 0.8)';
+                this.pulse = Math.random() * Math.PI * 2;
+                this.pulseSpeed = Math.random() * 0.05 + 0.02;
+                this.energy = Math.random() * 0.5 + 0.5;
+            }
+            
+            update() {
+                // 向中心（太阳）移动的能量流
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const dx = centerX - this.x;
+                const dy = centerY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // 粒子倾向于向太阳中心流动
+                const attraction = 0.0001;
+                this.speedX += dx * attraction;
+                this.speedY += dy * attraction;
+                
+                // 限制速度
+                const speedLimit = 2;
+                const currentSpeed = Math.sqrt(this.speedX * this.speedX + this.speedY * this.speedY);
+                if (currentSpeed > speedLimit) {
+                    this.speedX = (this.speedX / currentSpeed) * speedLimit;
+                    this.speedY = (this.speedY / currentSpeed) * speedLimit;
+                }
+                
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // 边界处理
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -0.8;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -0.8;
+                
+                // 脉冲效果
+                this.pulse += this.pulseSpeed;
+                if (this.pulse > Math.PI * 2) this.pulse = 0;
+                
+                // 能量衰减与再生
+                this.energy = 0.5 + 0.5 * Math.sin(this.pulse * 0.5);
+            }
+            
+            draw() {
+                const pulseSize = Math.sin(this.pulse) * 2;
+                
+                // 绘制粒子
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * this.energy + pulseSize, 0, Math.PI * 2);
+                ctx.fillStyle = this.color.replace('0.8', this.energy.toString());
+                ctx.fill();
+                
+                // 绘制能量尾迹
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x - this.speedX * 5, this.y - this.speedY * 5);
+                ctx.strokeStyle = this.color.replace('0.8', (this.energy * 0.3).toString());
+                ctx.lineWidth = this.size * 0.5;
+                ctx.stroke();
+            }
+        }
+        
+        // 创建太阳耀斑效果
+        class SolarFlare {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.radius = Math.random() * 100 + 50;
+                this.life = 1.0;
+                this.decay = Math.random() * 0.01 + 0.005;
+                this.color = `rgba(255, ${Math.floor(Math.random() * 100 + 155)}, 0, ${this.life})`;
+            }
+            
+            update() {
+                this.life -= this.decay;
+                this.radius += 2;
+                this.color = `rgba(255, ${Math.floor(Math.random() * 100 + 155)}, 0, ${this.life})`;
+                return this.life > 0;
+            }
+            
+            draw() {
+                const gradient = ctx.createRadialGradient(
+                    this.x, this.y, 0,
+                    this.x, this.y, this.radius
+                );
+                gradient.addColorStop(0, this.color);
+                gradient.addColorStop(1, 'rgba(255, 200, 0, 0)');
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+        }
+        
+        let flares = [];
+        
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new SolarParticle());
+            }
+        }
+        
+        // 随机生成太阳耀斑
+        function generateSolarFlares() {
+            if (Math.random() < 0.02) {
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 50 + 20;
+                
+                flares.push(new SolarFlare(
+                    centerX + Math.cos(angle) * distance,
+                    centerY + Math.sin(angle) * distance
+                ));
+            }
+        }
+        
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 10, 20, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // 绘制粒子
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            // 绘制并更新太阳耀斑
+            generateSolarFlares();
+            flares = flares.filter(flare => {
+                flare.update();
+                flare.draw();
+                return flare.life > 0;
+            });
+            
+            // 绘制粒子之间的连接线
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        const opacity = 0.3 * (1 - distance / 100) * particles[i].energy * particles[j].energy;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255, 215, 0, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        initParticles();
+        animate();
+        
+        // 交互功能
+        const acquireButton = document.getElementById('acquireButton');
+        const emailDisplay = document.getElementById('emailDisplay');
+        
+        acquireButton.addEventListener('click', function() {
+            const originalText = this.textContent;
+            this.textContent = 'CONNECTING TO SOLAR GRID...';
+            this.style.background = 'linear-gradient(90deg, var(--solar-orange), var(--pharaoh-purple))';
+            
+            setTimeout(() => {
+                this.textContent = 'INITIATING 3-PHASE PAYMENT PROTOCOL...';
+                
+                setTimeout(() => {
+                    window.location.href = 'mailto:joshua369x@gmail.com?subject=Amun-Ra.energy%20Domain%20Acquisition%20(3-Phase%20Plan)&body=I%20am%20interested%20in%20acquiring%20Amun-Ra.energy%20for%20$88,888%20via%20the%203-phase%20payment%20plan.%20Please%20provide%20details.';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'rgba(0, 255, 255, 0.1)';
+                    }, 3000);
+                }, 1500);
+            }, 1500);
+        });
+        
+        emailDisplay.addEventListener('click', function() {
+            const originalText = this.textContent;
+            this.textContent = 'EMAIL COPIED TO SOLAR BUFFER ✓';
+            this.style.background = 'rgba(0, 255, 0, 0.2)';
+            this.style.color = '#00FF00';
+            
+            navigator.clipboard.writeText('joshua369x@gmail.com').then(() => {
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = 'rgba(0, 255, 255, 0.1)';
+                    this.style.color = 'var(--energy-blue)';
+                }, 2000);
+            });
+        });
+        
+        // 添加键盘快捷键
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 's' || e.key === 'S') {
+                // 触发太阳耀斑效果
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const centerX = canvas.width / 2;
+                        const centerY = canvas.height / 2;
+                        const angle = Math.random() * Math.PI * 2;
+                        const distance = Math.random() * 80 + 30;
+                        
+                        flares.push(new SolarFlare(
+                            centerX + Math.cos(angle) * distance,
+                            centerY + Math.sin(angle) * distance
+                        ));
+                    }, i * 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
